@@ -1,37 +1,23 @@
 import "../App.css";
 import React from "react";
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import Game from "./Game";
+import Page from "./Page";
+import constants from "./consts";
+import queryString from 'query-string';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+function Home() {
+    // let search = window.location.search;
+    // let params = new URLSearchParams(search);
+    // let initialState = params.get(constants.CELLS_QUERY_PARAM);
+    //
 
-class Home extends React.Component {
-  render() {
+    const params = queryString.parse(window.location.search);
+
     return (
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={1}>
-          <Item>xs=8</Item>
-        </Grid>
-      </Grid>
+        <Page>
+            <Game queryState={params[constants.CELLS_QUERY_PARAM]}/>
+        </Page>
     );
-  }
 }
 
 export default Home;
