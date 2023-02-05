@@ -113,11 +113,12 @@ function Game({queryState}) {
             }
             setAliveCells(Array.from(newCells));
         }
+
         const interval = setInterval(() => {
             if (simulation) {
                 step();
             }
-        }, constants.SIMULATION_STEP);
+        }, constants.SIMULATION_INTERVAL);
 
         return () => clearInterval(interval);
     }, [aliveCells, simulation, cols, rows]);

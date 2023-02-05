@@ -9,7 +9,7 @@ const constants = {
     ENCODING_CELL_SEPARATOR: "_",
     ENCODING_COORDS_SEPARATOR: "-",
     CELLS_QUERY_PARAM: "cells",
-    SIMULATION_STEP: 5000,
+    SIMULATION_INTERVAL: 500,
 }
 
 function encode(cells) {

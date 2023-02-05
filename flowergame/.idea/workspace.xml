@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2078c51-de7a-4e23-8e5f-afc44a3050b8" name="Changes" comment="broken">
+    <list default="true" id="d2078c51-de7a-4e23-8e5f-afc44a3050b8" name="Changes" comment="permalink broken">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Cell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cell.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Game.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Game.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/consts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/consts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674906616260</updated>
       <workItem from="1674909715327" duration="26888000" />
-      <workItem from="1675598714633" duration="5369000" />
+      <workItem from="1675598714633" duration="6058000" />
     </task>
     <task id="LOCAL-00001" summary="broken">
       <created>1674936857918</created>
@@ -72,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674936857918</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="permalink broken">
+      <created>1675604090999</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675604090999</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +96,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="broken" />
-    <option name="LAST_COMMIT_MESSAGE" value="broken" />
+    <MESSAGE value="permalink broken" />
+    <option name="LAST_COMMIT_MESSAGE" value="permalink broken" />
   </component>
 </project>
