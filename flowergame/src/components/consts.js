@@ -9,7 +9,7 @@ const constants = {
     ENCODING_CELL_SEPARATOR: "_",
     ENCODING_COORDS_SEPARATOR: "-",
     CELLS_QUERY_PARAM: "cells",
-    SIMULATION_STEP: 3000,
+    SIMULATION_STEP: 5000,
 }
 
 function encode(cells) {
@@ -22,7 +22,7 @@ function encode(cells) {
 
 function decode(encodedString) {
     let cells = [];
-    if (encodedString == null)
+    if (encodedString == null || encodedString.length === 0)
         return cells;
 
     encodedString.split(constants.ENCODING_CELL_SEPARATOR).forEach(cell => {
