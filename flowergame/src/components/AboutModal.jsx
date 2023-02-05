@@ -1,13 +1,36 @@
-import {Box, Grid, Link, Typography} from "@mui/material";
-import Page from "./Page";
+import {Box, Button, Link, Modal, Typography} from "@mui/material";
+import React from "react";
 
+function AboutModal() {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-function About() {
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        maxWidth: '80%',
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
     return (
-        <Page>
-            <Grid container className={"about-container"}>
-                <Grid item>
-                    <Box>
+        <div>
+            <Button onClick={handleOpen}>Open modal</Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <div>
+                    <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            The Flower Game
+                        </Typography>
                         <Typography className={"rules-subtitle"}>These are the rules of a game. Let it be played upon an
                             infinite two-dimensional grid of
                             flowers.</Typography>
@@ -33,10 +56,10 @@ function About() {
                             href={"https://www.ishtar-collective.net/entries/the-flower-game"}>Darkness</Link>
                         </Typography>
                     </Box>
-                </Grid>
-            </Grid>
-        </Page>
+                </div>
+            </Modal>
+        </div>
     );
 }
 
-export default About;
+export default AboutModal;
