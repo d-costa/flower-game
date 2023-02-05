@@ -50,7 +50,6 @@ function Game({queryState}) {
 
     function simulate() {
         if (simulation) return;
-        console.log(aliveCells)
 
         setEncodedInitial(encode(aliveCells));
         setSimulation(true);
@@ -66,8 +65,6 @@ function Game({queryState}) {
 
     useEffect(() => {
         if (queryState !== undefined && !simulation) {
-            console.log(queryState)
-            console.log("detected query");
             setAliveCells(decode(queryState));
         }
     }, [queryState, simulation]);
@@ -88,7 +85,6 @@ function Game({queryState}) {
             return count;
         }
         function step() {
-            console.log("starting... ", JSON.stringify(aliveCells))
             let newCells = []
 
             for (let y = 0; y < rows; y++) {
@@ -97,12 +93,8 @@ function Game({queryState}) {
                     // Rule Two. A living flower with two or three living neighbors is connected. It lives.
                     // Rule Three. A living flower with more than three living neighbors is starved and overcrowded. It dies.
                     // Rule Four. A dead flower with exactly three living neighbors is reborn. It springs back to life.
-                    const currAlive = aliveCells.findIndex(c => c.x === x && c.y === y) > 0
+                    const currAlive = aliveCells.findIndex(c => c.x === x && c.y === y) >= 0
                     const neighbours = getNeighbours(x, y);
-
-                    if (currAlive) {
-                        console.log(`${x}, ${y}`);
-                    }
 
                     if (
                         (currAlive && neighbours >= 2 && neighbours <= 3) || (!currAlive && neighbours === 3)

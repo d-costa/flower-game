@@ -27,7 +27,7 @@ function decode(encodedString) {
 
     encodedString.split(constants.ENCODING_CELL_SEPARATOR).forEach(cell => {
         let coords = cell.split(constants.ENCODING_COORDS_SEPARATOR)
-        cells.push({x: coords[0], y: coords[1]})
+        cells.push({x: parseInt(coords[0]), y: parseInt(coords[1])})
     })
     return cells;
 }
