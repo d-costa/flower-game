@@ -180,15 +180,12 @@ function Game({ queryState }) {
           alignItems={"center"}
         >
             <Grid item>
-            <RouterLink
-              to={"/"}
+            <Link
+              href={""}
               reloadDocument={true}
-              className={
-                "MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ps4owl-MuiTypography-root-MuiLink-root"
-              }
             >
               Reset
-            </RouterLink>
+            </Link>
           </Grid>
           <GridSpacer />
           <Grid item>
