@@ -48,8 +48,10 @@ function Game({ queryState }) {
     return { x: posX, y: posY };
   }
 
-  function simulate() {
+  function simulate(e) {
     if (simulation) return;
+
+    e.stopPropagation();
 
     setEncodedInitial(encode(aliveCells));
     setSimulation(true);
@@ -160,6 +162,7 @@ function Game({ queryState }) {
           color="primary"
           aria-label="add"
           onClick={simulate}
+          
         >
           Start
         </Fab>
