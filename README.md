@@ -1,4 +1,4 @@
-# flower-game
+# The Flower Game
 
 ![Build](https://github.com/d-costa/flower-game/actions/workflows/deploy.yaml/badge.svg)
 
