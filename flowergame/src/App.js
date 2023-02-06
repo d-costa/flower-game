@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import Home from "./components/Home";
-import {HashRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import About from "./components/About";
 import Header from "./components/Header";
 
@@ -10,7 +10,7 @@ class App extends React.Component {
         return (
             <div className={"content"}>
                 <Header/>
-                <Router>
+                <Router basename={`/${process.env.PUBLIC_URL}`}>
                     <Routes>
                         <Route exact path="/" element={<Home/>}/>
                         <Route path="/about" element={<About/>}/>

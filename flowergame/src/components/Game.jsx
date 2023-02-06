@@ -179,6 +179,18 @@ function Game({ queryState }) {
           spacing={2}
           alignItems={"center"}
         >
+            <Grid item>
+            <RouterLink
+              to={"/"}
+              reloadDocument={true}
+              className={
+                "MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1ps4owl-MuiTypography-root-MuiLink-root"
+              }
+            >
+              Reset
+            </RouterLink>
+          </Grid>
+          <GridSpacer />
           <Grid item>
             <Link
               href={`?${constants.CELLS_QUERY_PARAM}=${
