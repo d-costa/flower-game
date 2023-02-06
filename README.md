@@ -1,5 +1,9 @@
 # flower-game
 
+https://github.com/d-costa/flowe-game/actions/workflows/deploy.yaml/badge.svg
+
+## About
+
 > These are the rules of a game. Let it be played upon an infinite two-dimensional grid of flowers.
 >
 > Rule One. A living flower with less than two living neighbors is cut off. It dies.
