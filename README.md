@@ -1,6 +1,6 @@
 # flower-game
 
-https://github.com/d-costa/flowe-game/actions/workflows/deploy.yaml/badge.svg
+![Build](https://github.com/d-costa/flowe-game/actions/workflows/deploy.yaml/badge.svg)
 
 ## About
 
