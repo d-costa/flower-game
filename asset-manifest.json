@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/flower-game/static/css/main.54ff00c6.css",
-    "main.js": "/flower-game/static/js/main.c6024b57.js",
+    "main.js": "/flower-game/static/js/main.1c163875.js",
     "static/js/787.cf465167.chunk.js": "/flower-game/static/js/787.cf465167.chunk.js",
     "index.html": "/flower-game/index.html",
     "main.54ff00c6.css.map": "/flower-game/static/css/main.54ff00c6.css.map",
-    "main.c6024b57.js.map": "/flower-game/static/js/main.c6024b57.js.map",
+    "main.1c163875.js.map": "/flower-game/static/js/main.1c163875.js.map",
     "787.cf465167.chunk.js.map": "/flower-game/static/js/787.cf465167.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.54ff00c6.css",
-    "static/js/main.c6024b57.js"
+    "static/js/main.1c163875.js"
   ]
 }
