@@ -61,3 +61,10 @@ code {
     align-content: center;
     align-items: center;
 }
+
+.fab {
+    position: fixed !important;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+};

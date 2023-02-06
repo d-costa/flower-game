@@ -4,6 +4,7 @@ import Cell from "./Cell";
 
 import { Link as RouterLink } from "react-router-dom";
 import { Divider, Grid, Link } from "@mui/material";
+import Fab from "@mui/material/Fab";
 
 function Game({ queryState }) {
   function handleBoardClick(event) {
@@ -151,12 +152,20 @@ function Game({ queryState }) {
             </div>
           ) : null;
         })}
+              {!simulation ? (
+        <Fab
+          className={"fab"}
+          variant="extended"
+          size="medium"
+          color="primary"
+          aria-label="add"
+          onClick={simulate}
+        >
+          Start
+        </Fab>
+      ) : null}
       </div>
-      <div>
-        <button onClick={simulate} disabled={simulation}>
-          Go
-        </button>
-      </div>
+
       <div className={"footer"}>
         <Divider variant={"fullWidth"} style={{ margin: "1rem" }} />
 

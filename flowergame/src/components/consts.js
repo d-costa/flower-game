@@ -3,7 +3,7 @@ import {Grid, Typography} from "@mui/material";
 const constants = {
     CELL_SIZE: 20,
     WIDTH: 1280,
-    HEIGHT: 720,
+    HEIGHT: 800,
     ALIVE_COLOR: "#38c176",
     DRAW_COLOR: "#ccc",
     ENCODING_CELL_SEPARATOR: "_",
