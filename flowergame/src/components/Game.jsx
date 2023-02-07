@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import constants, { decode, encode, GridSpacer } from "./consts";
 import Cell from "./Cell";
 import HorizontalGrid from "./HorizontalGrid";
@@ -8,7 +8,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Button, Grid, Link, Slider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
-function Game({initialState}) {
+function Game({ initialState }) {
   function handleBoardClick(event) {
     if (simulation || boardRef === null) return;
 
@@ -66,52 +66,29 @@ function Game({initialState}) {
     setSimulationInterval(newValue);
   };
 
-  useEffect(() => {
-    if (initialState !== undefined && !loaded) {
-      setLoaded(true);
-
-      if (initialState.cellsQuery !== undefined){
-        setAliveCells(decode(initialState.cellsQuery));
-      }
-      if (initialState.generation !== undefined){
-        setGeneration(initialState.generation);
-      }
+  
+  const step = useCallback(() => {
+    function getNeighbours(x, y) {
+      const directions = [
+        [-1, -1],
+        [0, -1],
+        [1, -1],
+        [-1, 0],
+        [1, 0],
+        [-1, 1],
+        [0, 1],
+        [1, 1],
+      ];
+      let count = 0;
+  
+      directions.forEach((d) => {
+        let index = aliveCells.findIndex(
+          (c) => c.x === x + d[0] && c.y === y + d[1]
+        );
+        if (index >= 0) count++;
+      });
+      return count;
     }
-  }, [initialState, loaded]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (simulation) {
-        step();
-      }
-    }, simulationInterval);
-
-    return () => clearInterval(interval);
-  }, [aliveCells, simulation, cols, rows, simulationInterval]);
-
-  function getNeighbours(x, y) {
-    const directions = [
-      [-1, -1],
-      [0, -1],
-      [1, -1],
-      [-1, 0],
-      [1, 0],
-      [-1, 1],
-      [0, 1],
-      [1, 1],
-    ];
-    let count = 0;
-
-    directions.forEach((d) => {
-      let index = aliveCells.findIndex(
-        (c) => c.x === x + d[0] && c.y === y + d[1]
-      );
-      if (index >= 0) count++;
-    });
-    return count;
-  }
-
-  function step() {
     let newCells = [];
 
     for (let y = 0; y < rows; y++) {
@@ -133,8 +110,32 @@ function Game({initialState}) {
       }
     }
     setAliveCells(Array.from(newCells));
-    setGeneration(generation+1);
-  }
+    setGeneration(g => g + 1);
+  }, [aliveCells, cols, rows]);
+
+
+  useEffect(() => {
+    if (initialState !== undefined && !loaded) {
+      setLoaded(true);
+
+      if (initialState.cellsQuery !== undefined) {
+        setAliveCells(decode(initialState.cellsQuery));
+      }
+      if (initialState.generation !== undefined) {
+        setGeneration(initialState.generation);
+      }
+    }
+  }, [initialState, loaded]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (simulation) {
+        step();
+      }
+    }, simulationInterval);
+
+    return () => clearInterval(interval);
+  }, [aliveCells, simulation, cols, rows, simulationInterval, step]);
 
   function valueText(value) {
     return `${value} ms`;
@@ -163,10 +164,7 @@ function Game({initialState}) {
           const pos = getCellCoords(coords.x, coords.y);
           return pos ? (
             <div key={`cell_${pos.x}_${pos.y}`}>
-              <Cell
-                x={pos.x}
-                y={pos.y}
-              />
+              <Cell x={pos.x} y={pos.y} />
             </div>
           ) : null;
         })}
@@ -179,25 +177,28 @@ function Game({initialState}) {
           <Button key={"button-start"} variant="contained" onClick={startPause}>
             Start / Pause
           </Button>
-          <Button key={"button-step"} variant="contained" onClick={step} disabled={simulation}>
+          <Button
+            key={"button-step"}
+            variant="contained"
+            onClick={step}
+            disabled={simulation}
+          >
             Step
           </Button>
 
-          
           <Box sx={{ width: 200 }} key={"interval-slider"}>
             <Slider
-                  value={simulationInterval}
-                  valueLabelDisplay="auto"
-                  valueLabelFormat={v => `${v}ms`}
-                  step={constants.SIMULATION_INTERVAL_STEP}
-                  onChange={handleSliderChange}
-                  getAriaValueText={valueText}
-                  min={constants.MIN_SIMULATION_INTERVAL}
-                  max={constants.MAX_SIMULATION_INTERVAL}
-                  aria-labelledby="input-slider"
-                />
+              value={simulationInterval}
+              valueLabelDisplay="auto"
+              valueLabelFormat={(v) => `${v}ms`}
+              step={constants.SIMULATION_INTERVAL_STEP}
+              onChange={handleSliderChange}
+              getAriaValueText={valueText}
+              min={constants.MIN_SIMULATION_INTERVAL}
+              max={constants.MAX_SIMULATION_INTERVAL}
+              aria-labelledby="input-slider"
+            />
           </Box>
-                
         </HorizontalGrid>
       </div>
 
@@ -212,7 +213,9 @@ function Game({initialState}) {
       >
         <Grid item>
           <Link
-            href={`?${constants.CELLS_QUERY_PARAM}=${encode(aliveCells)}&${constants.GENERATION_PARAM}=${generation}`}
+            href={`?${constants.CELLS_QUERY_PARAM}=${encode(aliveCells)}&${
+              constants.GENERATION_PARAM
+            }=${generation}`}
           >
             Permalink
           </Link>
