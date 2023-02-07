@@ -9,7 +9,11 @@ const constants = {
     ENCODING_CELL_SEPARATOR: "_",
     ENCODING_COORDS_SEPARATOR: "-",
     CELLS_QUERY_PARAM: "cells",
-    SIMULATION_INTERVAL: 500,
+    GENERATION_PARAM: "gen",
+    DEFAULT_SIMULATION_INTERVAL: 500,
+    MIN_SIMULATION_INTERVAL: 30,
+    MAX_SIMULATION_INTERVAL: 1000,
+    SIMULATION_INTERVAL_STEP: 50,
 }
 
 function encode(cells) {
@@ -40,5 +44,12 @@ function GridSpacer() {
     )
 }
 
-export {encode, decode, GridSpacer}
+class InitialGameState {
+    constructor(cellsQuery, generationQuery) {
+        this.cellsQuery = cellsQuery;
+        this.generation = parseInt(generationQuery) || 0;
+    }
+}
+
+export {encode, decode, GridSpacer, InitialGameState}
 export default constants;

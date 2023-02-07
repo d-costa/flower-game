@@ -44,15 +44,20 @@ code {
     align-items: center;
 }
 
-.header-title {
-    font-size: 3rem;
+.header {
+    cursor: pointer
 }
 
 .footer {
     width: 100%;
-    position: relative;
-    height: 60px;
     text-align: center;
+}
+
+.divider {
+    display: "flex";
+    align-items: "center";
+    width: 100%;
+    line-height: 100%;
 }
 
 .about-container {
@@ -68,3 +73,7 @@ code {
     left: 50%;
     transform: translateX(-50%);
 };
+
+a {
+    color: #1976d2;;
+}

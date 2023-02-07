@@ -1,6 +1,6 @@
 import constants from "./consts";
 
-function Cell({x, y, color}) {
+function Cell({x, y}) {
     return (
         <div
             className={"cell"}
@@ -9,7 +9,7 @@ function Cell({x, y, color}) {
                 top: `${y}px`,
                 width: `${constants.CELL_SIZE - 1}px`,
                 height: `${constants.CELL_SIZE - 1}px`,
-                backgroundColor: color,
+                background: constants.DRAW_COLOR
             }}
         />
     );

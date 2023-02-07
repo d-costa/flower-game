@@ -3,6 +3,7 @@ import React from "react";
 import Game from "./Game";
 import Page from "./Page";
 import constants from "./consts";
+import {InitialGameState} from "./consts";
 import queryString from 'query-string';
 
 function Home() {
@@ -10,7 +11,7 @@ function Home() {
 
     return (
         <Page>
-            <Game queryState={params[constants.CELLS_QUERY_PARAM]}/>
+            <Game initialState={new InitialGameState(params[constants.CELLS_QUERY_PARAM], params[constants.GENERATION_PARAM])}/>
         </Page>
     );
 }
